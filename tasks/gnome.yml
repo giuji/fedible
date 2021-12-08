@@ -1,0 +1,25 @@
+--- 
+
+- name: install gnome tools
+  become: yes
+  dnf:
+    name: gnome-tweaks dconf python3-psutil 
+    state: present
+
+- name: setup wallpaper
+  block:
+    - name: copy wallpaper
+      copy:
+        src: files/wallpaper.png
+        dest: /home/{{ username }}/.wallpaper.png
+        owner: "{{ username }}"
+        group: "{{ username }}"
+        mode: 0755
+    - name: set wallpaper
+      dconf:
+        key: "/org/gnome/desktop/background/picture-uri"
+        value: "'file:///home/{{ username }}/.wallpaper.png'"
+    - name: set lockscreen
+      dconf:
+        key: "/org/gnome/desktop/screensaver/picture-uri"
+        value: "'file:///home/{{ username }}/.wallpaper.png'"

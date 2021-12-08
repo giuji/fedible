@@ -1,0 +1,22 @@
+---
+
+- name: install rpm fusions repos
+  become: yes
+  dnf:
+  ¦ name: 'https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-
+  ¦ state: present
+  ¦ update_cache: yes
+
+- name: install flathub repo
+  flatpak_remote:
+  ¦ name: flathub
+  ¦ flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
+  ¦ state: present
+  ¦ method: user
+  
+- name: install gnome nighlty repo
+  flatpak_remote:
+  ¦ name: gnome-nightly
+  ¦ flatpakrepo_url: https://nightly.gnome.org/gnome-nightly.flatpakrepo
+  ¦ method: user                                                            
+  ¦ state: present 

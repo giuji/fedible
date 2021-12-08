@@ -1,0 +1,14 @@
+- hosts: all
+  gather_facts: yes
+  vats_files:
+    - group_vars/all/vars.yml
+  pre_tasks:
+  - name: update packages
+      dnf:
+        update_cache: yes
+        update_only: yes
+      become: yes
+
+  tasks:
+    - include: tasks/repos.yml
+    - include: tasks/gnome.yml
