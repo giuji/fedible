@@ -1,2 +1,2 @@
 # fedible
-(almost) automated fedora workstation setup via ansible
+**WIP** (almost) automated fedora workstation setup via ansible
