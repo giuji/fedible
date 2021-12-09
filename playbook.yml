@@ -12,3 +12,18 @@
   tasks:
     - include: tasks/repos.yml
     - include: tasks/gnome.yml
+
+  roles:
+    - role: jaredhocutt.gnome_extensions
+      vars:
+        gnome_extension_ids:
+          - 1319
+          - 615
+          - 906
+      tags:
+        - desktop
+
+    - role: neofetch
+      tags:
+        - utility
+
