@@ -18,11 +18,11 @@
     - name: set wallpaper
       dconf:
         key: "/org/gnome/desktop/background/picture-uri"
-        value: "'file:///home/"{{ username }}"/.wallpaper.jpg'"
+        value: "'file:///home/{{ username }}/.wallpaper.jpg'"
     - name: set lockscreen
       dconf:
         key: "/org/gnome/desktop/screensaver/picture-uri"
-        value: "'file:///home/"{{ username }}"/.wallpaper.jpg'"
+        value: "'file:///home/{{ username }}/.wallpaper.jpg'"
 
 - name: enable display scaling
   dconf:
@@ -65,6 +65,7 @@
   dconf:
     key: "/org/gnome/desktop/interface/gtk-theme"
     value: "'Adwaita-dark'"
+
 
 - name: enable tap to click
   dconf:
