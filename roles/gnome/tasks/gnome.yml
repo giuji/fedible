@@ -10,19 +10,19 @@
   block:
     - name: copy wallpaper
       copy:
-        src: files/wallpaper.png
-        dest: /home/{{ username }}/.wallpaper.png
+        src: files/wallpaper.jpg
+        dest: /home/{{ username }}/.wallpaper.jpg
         owner: "{{ username }}"
         group: "{{ username }}"
         mode: 0755
     - name: set wallpaper
       dconf:
         key: "/org/gnome/desktop/background/picture-uri"
-        value: "'file:///home/{{ username }}/.wallpaper.png'"
+        value: "'file:///home/"{{ username }}"/.wallpaper.jpg'"
     - name: set lockscreen
       dconf:
         key: "/org/gnome/desktop/screensaver/picture-uri"
-        value: "'file:///home/{{ username }}/.wallpaper.png'"
+        value: "'file:///home/"{{ username }}"/.wallpaper.jpg'"
 
 - name: enable display scaling
   dconf:
