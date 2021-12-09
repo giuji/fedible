@@ -1,6 +1,6 @@
 - hosts: all
   gather_facts: yes
-  vats_files:
+  vars_files:
     - group_vars/all/vars.yml
   pre_tasks:
   - name: update packages
@@ -9,21 +9,28 @@
         update_only: yes
       become: yes
 
-  tasks:
-    - include: tasks/repos.yml
-    - include: tasks/gnome.yml
-
   roles:
-    - role: jaredhocutt.gnome_extensions
+    - role: repos
+      tags:
+        - essential
+
+    - role: petermosmans.customize-gnome
       vars:
-        gnome_extension_ids:
-          - 1319
-          - 615
-          - 906
+        gnome_extension:
+          - id: 1319
+            enable: yes
+          - id: 615
+            enable: yes
+          - id: 906
+            enable: yes
       tags:
         - desktop
+
 
     - role: neofetch
       tags:
         - utility
 
+    - role: gnome
+      tags: 
+        - desktop

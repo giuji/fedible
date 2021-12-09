@@ -3,7 +3,10 @@
 - name: install gnome tools
   become: yes
   dnf:
-    name: gnome-tweaks dconf python3-psutil 
+    name: 
+      - gnome-tweaks 
+      - dconf 
+      - python3-psutil 
     state: present
 
 - name: setup wallpaper
