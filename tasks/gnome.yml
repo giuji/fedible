@@ -23,3 +23,95 @@
       dconf:
         key: "/org/gnome/desktop/screensaver/picture-uri"
         value: "'file:///home/{{ username }}/.wallpaper.png'"
+
+- name: enable display scaling
+  dconf:
+    key: "/org/gnome/mutter/experimental-features"
+    value: "['scale-monitor-framebuffer']"
+
+- name: disable default super+n shortcut
+  dconf:
+    key: "/org/gnome/shell/keybindings/switch-to-application-{{ item }}"
+    value: "['']"
+  loop:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+    - 9
+
+- name: show battery percentage
+  dconf:
+    key: "/org/gnome/desktop/interface/show-battery-percantage"
+    value: "true"
+
+- name: change default monospace font
+  block:
+    - name: install jetbrain mono
+      become: yes
+      dnf:
+        name: jetbrains-mono-fonts
+        state: present
+    - name: set as deafult
+      dconf:
+        key: "/org/gnome/desktop/interface/monospace-font-name"
+        value: "'JetBrains Mono 10'"
+
+- name: switch to adwaita dark
+  dconf:
+    key: "/org/gnome/desktop/interface/gtk-theme"
+    value: "'Adwaita-dark'"
+
+- name: enable tap to click
+  dconf:
+    key: "/org/gnome/desktop/peripherals/touchpad/tap-to-click"
+    value: "true"
+
+- name: center new windows
+  dconf:
+    key: "/org/gnome/mutter/center-new-windows"
+    value: "true"
+
+- name: alt tab
+  dconf:
+    key: "/org/gnome/shell/app-switcher/current-workspace-only"
+    value: "true"
+
+- name: switch workspace
+  dconf:
+    key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-{{ item }}"
+    value: "['<Super>{{ item }}']"
+  loop:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+    - 9
+
+- name: move window
+  dconf:
+    key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-{{ item }}"
+    value: "['<Super><Shift>{{ item }}']"
+  loop:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+    - 9
+
+- name: change alt+f4 to super+q
+  dconf:
+    key: "/org/gnome/desktop/wm/keybindings/close"
+    value: "['<Super>q']"
