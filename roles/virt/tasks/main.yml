@@ -1,0 +1,15 @@
+---
+
+  - name: install virt packages
+    become: yes
+    dnf:
+      name: @virtualization
+      state: present
+      install_weak_deps: yes
+
+  - name: enable libvirt service
+    become: yes
+    systemd:
+      name: libvirtd.service
+      enabled: yes
+      state: started

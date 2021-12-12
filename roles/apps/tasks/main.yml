@@ -1,0 +1,14 @@
+---
+
+  - name: install fav apps via .rpm
+    become: yes
+    dnf:
+      insall: "{{ native_packages }}"
+      state: present
+
+  - name: install av apps via flatpaks
+    flatpak:
+      method: user
+      name: "{{ flatpaks_packages }}"
+      state: present
+      remote: flathub

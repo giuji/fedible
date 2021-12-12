@@ -34,3 +34,11 @@
     - role: gnome
       tags: 
         - desktop
+
+    - role: virt
+      tags:
+        - apps
+
+    - role: apps
+      tags:
+        - apps

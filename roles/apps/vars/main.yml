@@ -1,0 +1,30 @@
+---
+
+native_packages:
+  - ffmpeg
+  - youtube-dl
+  - java-latest-openjdk
+  - htop
+
+flatpaks_packages:
+  - com.discordapp.Discord
+  - com.github.tchx84.Flatseal
+  - com.mojang.Minecraft
+  - com.spotify.Client
+  - com.system76.Popsicle
+  - com.tonikelope.MegaBasterd
+  - com.valvesoftware.Steam
+  - com.valvesoftware.Steam.CompatibilityTool.Proton-GE
+  - com.vscodium.codium
+  - me.kozec.syncthingtk
+  - net.ankiweb.Anki
+  - org.gimp.GIMP
+  - org.gnome.Epiphany
+  - org.kde.kdenlive
+  - org.onlyoffice.desktopeditors
+  - org.remmina.Remmina
+  - org.qbittorrent.qBittorrent
+  - org.telegram.desktop
+  - org.gnome.Extensions
+  - org.freedesktop.Platform.ffmpeg-full
+  - org.freedesktop.Platform.VulkanLayer.MangoHud
