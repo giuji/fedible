@@ -1,0 +1,44 @@
+---
+
+- name: install celluloid and ffmpeg
+  become: yes
+  dnf: 
+    name:
+      - celluloid
+      - ffmpeg
+    state: present
+
+- name: copy config files
+  copy:
+    src: celluloid
+    dest: /home/{{ username }}/.config
+    mode: 0755
+    owner: "{{ username }}"
+    group: "{{ username }}"
+
+- name: template in config
+  template:
+    dest: /home/{{ username }}/.config/celluloid/mpv.conf
+    src: mpv.conf.j2
+    mode: 0755
+    group: "{{ username }}"
+    owner: "{{ username }}"
+
+- name: enable said config
+  block:
+    - name: enable mpv conf
+      dconf:
+        key: "/io/github/celluloid-player/celluloid/mpv-config-enable"
+        value: "true"
+    - name: enable mpv input config
+      dconf:
+        key: "/io/github/celluloid-player/celluloid/mpv-input-config-enable"
+        value: "true"
+    - name: load mpv config
+      dconf:
+        key: "/io/github/celluloid-player/celluloid/mpv-config-file"
+        value: "'file:///home/{{ username }}/.config/celluloid/mpv.conf'"
+    - name: load mpv input config
+      dconf:
+        key: "/io/github/celluloid-player/celluloid/mpv-input-config-file"
+        value: "'file:///home/{{ username }}/.config/celluloid/input.conf'"

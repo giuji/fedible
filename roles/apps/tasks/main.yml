@@ -3,8 +3,16 @@
   - name: install fav apps via .rpm
     become: yes
     dnf:
-      insall: "{{ native_packages }}"
+      name: "{{ native_packages }}"
       state: present
+
+  - name: yeet libreoffice
+    become: yes
+    dnf:
+      name: "libreoffice*"
+      autoremove: yes
+      state: absent
+    ignore_errors: true
 
   - name: install av apps via flatpaks
     flatpak:
