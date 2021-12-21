@@ -3,20 +3,19 @@
   vars_files:
     - group_vars/all/vars.yml
   pre_tasks:
-  - name: update packages
+    - name: repos
+      import_tasks: tasks/repos.yml
+    - name: update packages
       dnf:
         update_cache: yes
-        update_only: yes
+        name: "*"
+        state: latest
       become: yes
 
   roles:
-    - role: repos
-      tags:
-        - essential
-
     - role: petermosmans.customize-gnome
       vars:
-        gnome_extension:
+        gnome_extensions:
           - id: 1319
             enable: yes
           - id: 615
@@ -26,19 +25,35 @@
       tags:
         - desktop
 
+    - role: zsh
+      tags: utility
 
     - role: neofetch
-      tags:
-        - utility
+      tags: utility
 
-    - role: gnome
-      tags: 
-        - desktop
-
-    - role: virt
-      tags:
-        - apps
+    - role: nvim
+      tags: apps
 
     - role: apps
-      tags:
-        - apps
+      tags: apps
+
+    - role: gnome
+      tags: desktop
+
+    - role: celluloid
+      tags: apps
+
+- hosts: all
+  tasks:
+    - name: hostname
+      import_tasks: tasks/hostname.yml
+      tags: system
+    - name: terminal
+      import_tasks: tasks/terminal.yml
+      tags: apps
+    - name: radeon profile
+      import_tasks: tasks/radeon.yml
+      tags: apps
+    - name: virt
+      import_tasks: tasks/virt.yml
+      tags: apps

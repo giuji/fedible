@@ -1,0 +1,7 @@
+---
+
+- name: change hostname
+  become: yes
+  hostname:
+    name: "{{ hostname }}"
+    use: systemd

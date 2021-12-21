@@ -1,0 +1,17 @@
+---
+
+- name: install
+  become: yes
+  dnf:
+    name: 
+      - radeon-profile
+      - radeon-profile-daemon
+    state: present
+
+- name: enable radeon profile daemon
+  become: yes
+  systemd:
+    name: radeon-profile-daemon.service
+    enabled: yes
+    state: started
+    scope: system

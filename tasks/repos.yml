@@ -2,20 +2,20 @@
 
   - name: install rpm fusions repos
     become: yes
-      dnf:
-        name: 
-          - https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ fedora_version }}.noarch.rpm 
-          - https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ fedora_version }}.noarch.rpm'
-        state: present
-        disable_gpg_check: yes
-        update_cache: yes
+    dnf:
+      name: 
+        - 'https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ fedora_version }}.noarch.rpm'
+        - 'https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ fedora_version }}.noarch.rpm'
+      state: present
+      disable_gpg_check: yes
+      update_cache: yes
 
   - name: install flathub repo
     flatpak_remote:
+      method: user
       name: flathub
       flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
       state: present
-      method: user
   
   - name: install gnome nighlty repo
     flatpak_remote:

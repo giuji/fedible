@@ -3,7 +3,7 @@
   - name: install virt packages
     become: yes
     dnf:
-      name: @virtualization
+      name: '@virtualization'
       state: present
       install_weak_deps: yes
 

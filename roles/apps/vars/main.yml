@@ -5,6 +5,7 @@ native_packages:
   - youtube-dl
   - java-latest-openjdk
   - htop
+  - qjackctl
 
 flatpaks_packages:
   - com.discordapp.Discord
@@ -26,5 +27,7 @@ flatpaks_packages:
   - org.qbittorrent.qBittorrent
   - org.telegram.desktop
   - org.gnome.Extensions
-  - org.freedesktop.Platform.ffmpeg-full
   - org.freedesktop.Platform.VulkanLayer.MangoHud
+  - com.github.wwmm.easyeffects
+  - com.github.vikdevelop.photopea_app
+  - org.gnome.PasswordSafe

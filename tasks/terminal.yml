@@ -1,0 +1,26 @@
+---
+
+- name: close tab
+  dconf:
+    key: "/org/gnome/terminal/legacy/keybindings/close-tab"
+    value: "'<Primary>w'"
+
+- name: close window
+  dconf: 
+    key: "/org/gnome/terminal/legacy/keybindings/close-window"
+    value: "'<Primary>q'"
+
+- name: new tab
+  dconf:
+    key: "/org/gnome/terminal/legacy/keybindings/new-tab"
+    value: "'<Primary>t'"
+
+- name: next-tab
+  dconf: 
+    key: "/org/gnome/terminal/legacy/keybindings/next-tab"
+    value: "'<Primary>l'"
+
+- name: prev-tab
+  dconf:
+    key: "/org/gnome/terminal/legacy/keybindings/prev-tab"
+    value: "'<Primary>h'"
